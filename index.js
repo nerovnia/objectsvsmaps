@@ -54,7 +54,10 @@ const writeTest = (symbols) => {
     obj,
     map,
     writeObjTime,
-    writeMapTime
+    writeMapTime,
+    diff() {
+      return this.writeObjTime - this.writeMapTime;
+    }
   }
 };
 
@@ -79,24 +82,26 @@ const readTest = (maxIterations, symbols, obj, map) => {
   }
   return {
     readObjTime,
-    readMapTime
+    readMapTime,
+    diff() {
+      return this.readObjTime - this.readMapTime;
+    }
   }
 };
 
 const arrSymbols = fillKeys(maxArrLength);
-//console.log(arrSymbols.length);
-
 const testWrittenObj = writeTest(arrSymbols);
-
 const testReadObj = readTest(maxTestIterations, arrSymbols, testWrittenObj.obj, testWrittenObj.map);
-
 const testWriteObj = {
-  testWrittenObj.writeObjTime, 
-  testWrittenObj.writeMapTime
+  writeObjTime: testWrittenObj.writeObjTime, 
+  writeMapTime: testWrittenObj.writeMapTime,
+  diff: testWrittenObj.diff(),
 };
 //const testWriteObj = {writeObjTime, writeMapTime};
-console.log(testWriteObj());
+console.log(testWriteObj);
+//console.log(testWriteObj.diff());
 console.log(testReadObj);
+//console.log(testReadObj.diff());
 
 
 
