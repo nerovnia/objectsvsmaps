@@ -1,19 +1,29 @@
 const { fillKeys } = require('./service.js');
-//const { writeTest, readTest } = require('./manner1.js');
-const { writeTest, readTest } = require('./manner2.js');
+const { man1 } = require('./manner1.js');
+const { man2 } = require('./manner2.js');
 
 const performanceTest = (maxArrLength, maxTestIterations, maxElementValue) => {
   const arrSymbols = fillKeys(maxArrLength);
-  const testWriteObj = writeTest(arrSymbols, maxElementValue);
-  const testReadObj = readTest(maxTestIterations, arrSymbols, testWriteObj.obj, testWriteObj.map);
+  const testWriteObj1 = man1.writeTest(arrSymbols, maxElementValue);
+  const testReadObj1 = man1.readTest(maxTestIterations, arrSymbols, testWriteObj1.obj, testWriteObj1.map);
+  const testWriteObj2 = man2.writeTest(arrSymbols, maxElementValue);
+  const testReadObj2 = man2.readTest(maxTestIterations, arrSymbols, testWriteObj2.obj, testWriteObj2.map);
 
   const result = {
-    ...testWriteObj,
-    ...testReadObj
+    man1: {
+      ...testWriteObj1,
+      ...testReadObj1,
+    },
+    man2: {
+      ...testWriteObj2,
+      ...testReadObj2
+    }
   }
 
-  delete result.obj;
-  delete result.map;
+  delete result.man1.obj;
+  delete result.man1.map;
+  delete result.man2.obj;
+  delete result.man2.map;
   
   return result;
 }

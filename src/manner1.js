@@ -43,12 +43,12 @@ const readTest = (maxIterations, symbols, obj, map) => {
     let endTime = performance.now();
 
     startTime = performance.now();
-    let test = obj[symbols[num]];
+    obj[symbols[num]];
     endTime = performance.now();
     readObjTime += endTime - startTime;
 
     startTime = performance.now();
-    test = map.get(symbols[num]);
+    map.get(symbols[num]);
     endTime = performance.now();
     readMapTime += endTime - startTime;
   }
@@ -62,6 +62,8 @@ const readTest = (maxIterations, symbols, obj, map) => {
 };
 
 module.exports = {
-  writeTest,
-  readTest
+  man1: {
+    writeTest,
+    readTest
+  }
 }

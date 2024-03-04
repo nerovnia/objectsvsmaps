@@ -1,21 +1,28 @@
 const { randomNumber } = require('./service.js');
 
 const getReadTestTime = (collection, element, callback) => {
-  const startTime = performance.now();
-  const test = callback(collection, element);
-  const endTime = performance.now();
+  let startTime = 0;
+  let endTime = 0;
+
+  startTime = performance.now();
+  callback(collection, element);
+  endTime = performance.now();
+
   return endTime - startTime;
 }
 
 const getWriteTestTime = (collection, element, value, callback) => {
-  const startTime = performance.now();
+  let startTime = 0;
+  let endTime = 0;
+
+  startTime = performance.now();
   callback(collection, element, value);
-  const endTime = performance.now();
+  endTime = performance.now();
+
   return endTime - startTime;
 }
 
 const writeTest = (symbols, maxElementValue) => {
-  console.log(maxElementValue);
   if (!Array.isArray(symbols)) return {};
   const obj = {};
   const map = new Map();
@@ -55,6 +62,8 @@ const readTest = (maxIterations, symbols, obj, map) => {
 };
 
 module.exports = {
-  writeTest,
-  readTest
+  man2: {
+    writeTest,
+    readTest
+  }
 }
