@@ -1,20 +1,18 @@
 const { randomNumber } = require('./service.js');
 
 const getReadTestTime = (collection, element, callback) => {
-  let startTime = 0;
-  let endTime = 0;
-  let test = null;
-
-  startTime = performance.now();
-  test = callback(collection, element);
-  endTime = performance.now();
+  const startTime = performance.now();
+  const test = callback(collection, element);
+  const endTime = performance.now();
   return endTime - startTime;
 }
 
-const getWriteTestTime = () => {
-  
+const getWriteTestTime = (collection, element, value, callback) => {
+  const startTime = performance.now();
+  callback(collection, element, value);
+  const endTime = performance.now();
+  return endTime - startTime;
 }
-
 
 const writeTest = (symbols, maxElementValue) => {
   console.log(maxElementValue);
@@ -25,18 +23,8 @@ const writeTest = (symbols, maxElementValue) => {
   let writeMapTime = 0;
   for (const symbol of symbols) {
     const num = randomNumber(maxElementValue);
-    let startTime = performance.now();
-    let endTime = performance.now();
-
-    startTime = performance.now();
-    obj[symbol] = num;
-    endTime = performance.now();
-    writeObjTime += endTime - startTime;
-
-    startTime = performance.now();
-    map.set(symbol, num);
-    endTime = performance.now();
-    writeMapTime += endTime - startTime;
+    writeObjTime += getWriteTestTime(obj, symbol, num, (collection, element, value) => collection[element] = value);
+    writeMapTime += getWriteTestTime(map, symbol, num, (collection, element, value) => collection.set(element, value));
   }
   return {
     obj,
