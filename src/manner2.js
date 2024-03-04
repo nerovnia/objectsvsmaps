@@ -50,21 +50,20 @@ const writeTest = (symbols, maxElementValue) => {
 };
 
 const readTest = (maxIterations, symbols, obj, map) => {
-  let readObjTime = 0;
-  let readMapTime = 0;
-
-  for (let i = 0; i < maxIterations; i++) {
-    const num = randomNumber(symbols.length - 1);
-    readObjTime += getReadTestTime(obj, symbols[num], (collection, element) => collection[element]);
-    readMapTime += getReadTestTime(map, symbols[num], (collection, element) => collection.get(element));
-  }
-  return {
-    readObjTime,
-    readMapTime,
+  const result = {
+    readObjTime: 0,
+    readMapTime: 0,
     get diffRead() {
       return this.readObjTime - this.readMapTime;
     }
+  };
+
+  for (let i = 0; i < maxIterations; i++) {
+    const num = randomNumber(symbols.length - 1);
+    result.readObjTime += getReadTestTime(obj, symbols[num], (collection, element) => collection[element]);
+    result.readMapTime += getReadTestTime(map, symbols[num], (collection, element) => collection.get(element));
   }
+  return result;
 };
 
 module.exports = {
