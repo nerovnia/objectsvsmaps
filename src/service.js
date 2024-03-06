@@ -1,3 +1,5 @@
+'use strict';
+
 const randomNumber = (number) => Math.floor(Math.random() * number);
 
 const fillKeys = (length) => {

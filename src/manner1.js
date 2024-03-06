@@ -1,3 +1,5 @@
+'use strict';
+
 const { randomNumber } = require('./service.js');
 
 const writeTest = (symbols, maxElementValue) => {

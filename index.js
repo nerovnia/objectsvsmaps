@@ -1,8 +1,11 @@
+'use strict';
+
 /**
  * Compare performance Objects vs Maps
  */
 
 const performanceTest = require('./src/test.js');
+const saveMeasurements = require('./src/saveMeasurements.js');
 
 const minElementsInstances = 100;
 const maxElementsInstances = 1000000;
@@ -21,7 +24,9 @@ for (let i = 0; i < numberOfMeasurements; i++) {
   arrMeasurements.push(performanceTest(maxArrLength, maxTestIterations, maxValueFigure));
 }
 
-console.log(arrMeasurements);
+
+saveMeasurements(JSON.stringify(arrMeasurements));
+//console.log();
 
 /*
 console.log(`Write time for Objects = ${writeObjTime} Maps = ${writeMapTime}`);

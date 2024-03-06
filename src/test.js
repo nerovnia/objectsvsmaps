@@ -1,3 +1,5 @@
+'use strict';
+
 const { fillKeys } = require('./service.js');
 const { man1 } = require('./manner1.js');
 const { man2 } = require('./manner2.js');
