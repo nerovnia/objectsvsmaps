@@ -1,16 +1,22 @@
 'use strict';
 
 const fs = require('node:fs');
+const path = require('path');
 
-const saveMeasurements = (data) => {
+const createDirectory = (directoryPath) => {
+  if (!fs.existsSync(directoryPath)) {
+    fs.mkdirSync(directoryPath, { recursive: true });
+  }
+};
+
+const saveMeasurements = (data, directoryPath) => {
   if (data) {
-    fs.writeFile('node-test-time-obj-map.js', content, (err) => {
+    createDirectory(directoryPath);
+    fs.writeFile(`${directoryPath}/node-test-time-obj-map.js`, data, (err) => {
       if (err) throw err;
-      console.log(`New file size: ${content.length}`);
+      console.log(`New file size: ${data.length}`);
     });
   }
 }
 
-module.exports = {
-  saveMeasurements,
-};
+module.exports = saveMeasurements;
