@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <canvas id="myChart"></canvas>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../data/node-test-time-obj-map.js"></script>
+
+  <script>
+    const ctx = document.getElementById('myChart');
+    
+    console.log(measurements);
+
+    const x = [];
+    for(let i=0; i< measurements.length; i++) {
+      x.push(i.toString(10));
+    }
+
+    let sumDiffReadMan1 = 0;
+    let sumDiffWriteMan1 = 0;
+    let sumReadMapTimeMan1 = 0;
+    let sumReadObjTimeMan1 = 0;
+    let sumWriteMapTimeMan1 = 0;
+    let sumWriteObjTimeMan1 = 0;
+    let sumDiffReadMan2 = 0;
+    let sumDiffWriteMan2 = 0;
+    let sumReadMapTimeMan2 = 0;
+    let sumReadObjTimeMan2 = 0;
+    let sumWriteMapTimeMan2 = 0;
+    let sumWriteObjTimeMan2 = 0;
+
+    const diffReadMan1 = [];
+    const diffWriteMan1 = [];
+    const readMapTimeMan1 = [];
+    const readObjTimeMan1 = [];
+    const writeMapTimeMan1 = [];
+    const writeObjTimeMan1 = [];
+    const diffReadMan2 = [];
+    const diffWriteMan2 = [];
+    const readMapTimeMan2 = [];
+    const readObjTimeMan2 = [];
+    const writeMapTimeMan2 = [];
+    const writeObjTimeMan2 = [];
+
+    for(const el of measurements) {
+
+      diffReadMan1.push(el.man1.diffRead);
+      diffWriteMan1.push(el.man1.diffWrite);
+      readMapTimeMan1.push(el.man1.readMapTime);
+      readObjTimeMan1.push(el.man1.readObjTime);
+      writeMapTimeMan1.push(el.man1.writeMapTime);
+      writeObjTimeMan1.push(el.man1.writeObjTime);
+      diffReadMan2.push(el.man2.diffRead);
+      diffWriteMan2.push(el.man2.diffWrite);
+      readMapTimeMan2.push(el.man2.readMapTime);
+      readObjTimeMan2.push(el.man2.readObjTime);
+      writeMapTimeMan2.push(el.man2.writeMapTime);
+      writeObjTimeMan2.push(el.man2.writeObjTime);
+
+
+
+      /*
+      sumDiffReadMan1 += el.man1.diffRead;
+      sumDiffWriteMan1 += el.man1.diffWrite;
+      sumReadMapTimeMan1 += el.man1.readMapTime;
+      sumReadObjTimeMan1 += el.man1.readObjTime;
+      sumWriteMapTimeMan1 += el.man1.writeMapTime;
+      sumWriteObjTimeMan1 += el.man1.writeObjTime;
+      sumDiffReadMan2 += el.man2.diffRead;
+      sumDiffWriteMan2 += el.man2.diffWrite;
+      sumReadMapTimeMan2 += el.man2.readMapTime;
+      sumReadObjTimeMan2 += el.man2.readObjTime;
+      sumWriteMapTimeMan2 += el.man2.writeMapTime;
+      sumWriteObjTimeMan2 += el.man2.writeObjTime;
+
+      diffReadMan1.push(sumDiffReadMan1);
+      diffWriteMan1.push(sumDiffWriteMan1);
+      readMapTimeMan1.push(sumReadMapTimeMan1);
+      readObjTimeMan1.push(sumReadObjTimeMan1);
+      writeMapTimeMan1.push(sumWriteMapTimeMan1);
+      writeObjTimeMan1.push(sumWriteObjTimeMan1);
+      diffReadMan2.push(sumDiffReadMan2);
+      diffWriteMan2.push(sumDiffWriteMan2);
+      readMapTimeMan2.push(sumReadMapTimeMan2);
+      readObjTimeMan2.push(sumReadObjTimeMan2);
+      writeMapTimeMan2.push(sumWriteMapTimeMan2);
+      writeObjTimeMan2.push(sumWriteObjTimeMan2);
+      */
+    }
+
+
+/*
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: x,
+        datasets: [{
+          label: '# of Votes',
+          data: diffReadMan1,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });*/
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: x,
+        datasets: [
+          {
+          label: 'diffReadMan1',
+          data: diffReadMan1,
+          borderWidth: 1
+        },
+        {
+          label: 'diffWriteMan1',
+          data: diffWriteMan1,
+          borderWidth: 1
+        },
+        {
+          label: 'readMapTimeMan1',
+          data: readMapTimeMan1,
+          borderWidth: 1
+        },
+        {
+          label: 'readObjTimeMan1',
+          data: readObjTimeMan1,
+          borderWidth: 1
+        },
+
+        {
+          label: 'writeMapTimeMan1',
+          data: writeMapTimeMan1,
+          borderWidth: 1
+        },
+        {
+          label: 'writeObjTimeMan1',
+          data: writeObjTimeMan1,
+          borderWidth: 1
+        },
+
+
+
+      ]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+  
+  </body>
+</html>
