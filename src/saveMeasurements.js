@@ -11,8 +11,12 @@ const createDirectory = (directoryPath) => {
 
 const saveMeasurements = (data, directoryPath) => {
   if (data) {
+    const content = `
+    const dataMeasurements = '${data}';
+    const measurements = JSON.parse(dataMeasurements);
+    `;
     createDirectory(directoryPath);
-    fs.writeFile(`${directoryPath}/node-test-time-obj-map.js`, data, (err) => {
+    fs.writeFile(`${directoryPath}/node-test-time-obj-map.js`, content, (err) => {
       if (err) throw err;
       console.log(`New file size: ${data.length}`);
     });
