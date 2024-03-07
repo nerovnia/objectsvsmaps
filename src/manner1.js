@@ -3,7 +3,6 @@
 const { randomNumber } = require('./service.js');
 
 const writeTest = (symbols, maxElementValue) => {
-  console.log(maxElementValue);
   if (!Array.isArray(symbols)) return {};
   const obj = {};
   const map = new Map();
