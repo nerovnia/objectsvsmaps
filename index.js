@@ -17,7 +17,7 @@ const maxArrLength = 10000;
 const maxValueFigure = 5000;
 const maxTestIterations = Math.floor(maxArrLength * 1.5);
 
-const numberOfMeasurements = 50;
+const numberOfMeasurements = 5000;
 const arrMeasurements = [];
 
 
