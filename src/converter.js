@@ -1,6 +1,7 @@
 'use strict';
 
 const measurements = require('../data/test-time-chart.js');
+const saveMeasurements = require('./saveMeasurements.js');
 
 const mans = ['man1', 'man2'];
 
@@ -32,4 +33,6 @@ for (const measure of measurements) {
   }
 }
 
-console.log(res.man1.writeMapTime.length);
+const testDataDirectory = './data/';
+const testDataFileName = 'test-time-for-chart.js';
+saveMeasurements(JSON.stringify(res), testDataDirectory, testDataFileName);
