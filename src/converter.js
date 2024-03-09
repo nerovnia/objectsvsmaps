@@ -2,28 +2,9 @@
 
 const measurements = require('../data/test-time-chart.js');
 const saveMeasurements = require('./saveMeasurements.js');
+const MesurementsData = require('./classes/MeasurementsData.js');
 
-const mans = ['man1', 'man2'];
-
-const res = 
-  {
-    man1: {
-      writeObjTime: [],
-      writeMapTime: [],
-      diffWrite: [],
-      readObjTime: [],
-      readMapTime: [],
-      diffRead: [],
-    },
-    man2: {
-      writeObjTime: [],
-      writeMapTime: [],
-      diffWrite: [],
-      readObjTime: [],
-      readMapTime: [],
-      diffRead: [],
-    }
-  };
+const res = new MesurementsData();
 
 for (const measure of measurements) {
   for(const man of Object.keys(res)) {
