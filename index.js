@@ -7,7 +7,8 @@
 const performanceTest = require('./src/test.js');
 const saveMeasurements = require('./src/saveMeasurements.js');
 
-const testSataDirectory = './data';
+const testDataDirectory = './data';
+const testDataFileName = 'node-test-time-obj-map.js';
 
 const minElementsInstances = 100;
 const maxElementsInstances = 1000000;
@@ -27,7 +28,7 @@ for (let i = 0; i < numberOfMeasurements; i++) {
 }
 
 
-saveMeasurements(JSON.stringify(arrMeasurements), testSataDirectory);
+saveMeasurements(JSON.stringify(arrMeasurements), testDataDirectory, testDataFileName);
 //console.log();
 
 /*
