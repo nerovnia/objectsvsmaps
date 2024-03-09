@@ -9,14 +9,14 @@ const createDirectory = (directoryPath) => {
   }
 };
 
-const saveMeasurements = (data, directoryPath) => {
+const saveMeasurements = (data, directoryPath, filename) => {
   if (data) {
     const content = `
     const dataMeasurements = '${data}';
     const measurements = JSON.parse(dataMeasurements);
     `;
     createDirectory(directoryPath);
-    fs.writeFile(`${directoryPath}/node-test-time-obj-map.js`, content, (err) => {
+    fs.writeFile(`${directoryPath}/${filename}`, content, (err) => {
       if (err) throw err;
       console.log(`New file size: ${data.length}`);
     });
