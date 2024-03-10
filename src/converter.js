@@ -1,8 +1,8 @@
 'use strict';
 
-const measurements = require('../data/test-time-chart.js');
 const saveMeasurements = require('./saveMeasurements.js');
 const MesurementsData = require('./classes/MeasurementsData.js');
+const measurements = require('../data/test-time-chart.js');
 
 const res = new MesurementsData();
 
