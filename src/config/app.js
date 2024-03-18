@@ -10,4 +10,9 @@ module.exports = {
   },
   
   numberOfMeasurements: 5000,
+
+  testDataFile: {
+    directory: './data',
+    name: 'node-test-time-obj-map.js',
+  },
 }
